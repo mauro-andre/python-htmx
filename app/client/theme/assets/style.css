@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+    font-size: 16px;
+    --theme-color: #0b2e77;
+    --theme-color-hover: #0d57d8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    color: rgb(37, 37, 37);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, fill 0.3s,
+        stroke 0.3s;
+}
+
+body {
+    background-color: rgb(227, 227, 227);
+}
+
+button {
+    border: none;
+    color: #fff;
+    background-color: var(--theme-color);
+    cursor: pointer;
+    height: 2rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+}
+
+button:hover {
+    background-color: var(--theme-color-hover);
+}
+
+input {
+    height: 2rem;
+    font-size: 1rem;
+    padding: 0rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 0.1rem solid transparent;
+    background-color: #e7ebf4;
+}
+
+input:focus {
+    outline: none;
+    border: 0.1rem solid var(--theme-color-hover);
+}
+
+a {
+    text-decoration: none;
+    color: var(--theme-color);
+}
+
+a:hover {
+    color: var(--theme-color-hover);
+}
+
+.credentials-section {
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.credentials-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.credentials-img {
+    background-image: url("./background-credentials.jpg");
+    background-position: center;
+    background-size: cover;
+    width: 40rem;
+    height: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.credentials-img > img {
+    width: 15rem;
+}
+
+.credentials-form {
+    /* width: 20rem; */
+    /* background-color: #fff; */
+    /* padding: 2.5rem 2rem; */
+    /* border-radius: 0.75rem; */
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+    width: 20rem;
+    padding: 0rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.credentials-change-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.credentials-change-form a {
+    font-weight: 700;
+}
