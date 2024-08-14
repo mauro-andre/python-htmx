@@ -3,7 +3,17 @@
 :root {
     font-size: 16px;
     --theme-color: #0b2e77;
-    --theme-color-hover: #0d57d8;
+    --theme-hover-color: #0d57d8;
+    --theme-hover-lighter-color: #e2e5eb;
+    --theme-hover-active-color: #d6dbe4;
+    --body-bg-color: #e7e9ee;
+    --sidebar-width: 5rem;
+    --danger-bg-color: #eec8cb;
+    --danger-text-color: #3b0e12;
+    --warning-bg-color: #fff3cd;
+    --warning-text-color: #332701;
+    --success-bg-color: #b3d8c8;
+    --success-text-color: #0a3622;
 }
 
 * {
@@ -17,7 +27,7 @@
 }
 
 body {
-    background-color: rgb(227, 227, 227);
+    background-color: var(--body-bg-color);
 }
 
 button {
@@ -31,7 +41,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--theme-color-hover);
+    background-color: var(--theme-hover-color);
 }
 
 input {
@@ -45,7 +55,7 @@ input {
 
 input:focus {
     outline: none;
-    border: 0.1rem solid var(--theme-color-hover);
+    border: 0.1rem solid var(--theme-hover-color);
 }
 
 a {
@@ -53,8 +63,12 @@ a {
     color: var(--theme-color);
 }
 
+li {
+    list-style-type: none;
+}
+
 a:hover {
-    color: var(--theme-color-hover);
+    color: var(--theme-hover-color);
 }
 
 .credentials-section {
@@ -76,7 +90,8 @@ a:hover {
     background-image: url("./background-credentials.jpg");
     background-position: center;
     background-size: cover;
-    width: 40rem;
+    background-repeat: no-repeat;
+    width: 35rem;
     height: 30rem;
     display: flex;
     align-items: center;
@@ -88,11 +103,6 @@ a:hover {
 }
 
 .credentials-form {
-    /* width: 20rem; */
-    /* background-color: #fff; */
-    /* padding: 2.5rem 2rem; */
-    /* border-radius: 0.75rem; */
-    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
     width: 20rem;
     padding: 0rem 2rem;
     display: flex;
@@ -113,4 +123,170 @@ a:hover {
 }
 .credentials-change-form a {
     font-weight: 700;
+}
+
+.app {
+    display: flex;
+    height: 100svh;
+}
+
+.sidebar {
+    background-color: #fff;
+    width: var(--sidebar-width);
+    height: 100svh;
+}
+
+.sidebar header {
+    background-color: rgb(241, 241, 241);
+    padding: 1rem;
+}
+
+.sidebar nav {
+    margin-top: 2rem;
+}
+
+.menu-item {
+    display: flex;
+    border: 0.5rem solid transparent;
+}
+
+.menu-item:hover {
+    background-color: var(--theme-hover-lighter-color);
+}
+
+.menu-item.active {
+    background-color: var(--theme-hover-active-color);
+}
+
+.menu-item a {
+    width: 100%;
+    height: 3.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item a i {
+    color: var(--theme-color);
+    font-size: 2rem;
+}
+
+.app main {
+    flex: 1;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem 0rem;
+}
+
+.summary-data {
+    background-color: #0d57d8;
+    width: 14rem;
+    height: 8rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-data.success {
+    background-color: var(--success-bg-color);
+}
+
+.summary-data.success h1,
+.summary-data.success p {
+    color: var(--success-text-color);
+}
+
+.summary-data.warning {
+    background-color: var(--warning-bg-color);
+}
+
+.summary-data.warning h1,
+.summary-data.warning p {
+    color: var(--warning-text-color);
+}
+
+.summary-data.danger {
+    background-color: var(--danger-bg-color);
+}
+
+.summary-data.danger h1,
+.summary-data.danger p {
+    color: var(--danger-text-color);
+}
+
+.summary-data h1 {
+    font-size: 3rem;
+}
+
+.todo {
+    background-color: #fff;
+    width: 60rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    border-radius: 0.8rem;
+}
+
+.todo-item {
+    margin: 3rem 0;
+}
+
+
+.todo-description {
+    margin-bottom: 1rem;
+}
+
+.todo-description::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #b3b5bc;
+    margin-top: 0.2rem;
+}
+
+.todo-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-details > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 3.5rem;
+}
+
+.todo-actions i {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.fa-pen {
+    color: var(--theme-hover-color);
+}
+
+.fa-trash {
+    color: red;
+}
+
+.status::before {
+    content: "";
+    display: inline-block;
+    background-color: rgb(121, 121, 121);
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    margin-right: 0.2rem;
 }
