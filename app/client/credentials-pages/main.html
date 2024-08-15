@@ -1,3 +1,17 @@
 {% extends "base.html" %} {% block main %}
-<section class="credentials-page">{% include page.html_file %}</section>
+
+<section class="credentials-section">
+    <div class="credentials-card">
+        <div class="credentials-img">
+            <img
+                src="./assets/logo-fortlev-solar.svg"
+                alt="logo-fortlev-solar"
+            />
+        </div>
+        <form id="credentials-form" class="credentials-form">
+            {% include page.html %}
+        </form>
+    </div>
+</section>
+
 {% endblock %}

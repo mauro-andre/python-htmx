@@ -1,0 +1,22 @@
+<div class="form-title">
+    <h1>Criar conta</h1>
+</div>
+<div class="form-input">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" />
+</div>
+<div class="form-input">
+    <label for="password">Senha</label>
+    <input type="password" name="password" id="password" />
+</div>
+<button hx-post="/user/" hx-target="#alert" hx-target-400="#alert" hx-swap="outerHTML" type="submit">
+    Criar conta
+</button>
+<div id="alert"></div>
+<div
+    class="credentials-change-form"
+    hx-boost="true"
+    hx-target="#credentials-form"
+>
+    <p>Já possui conta? <a href="/login">Entrar</a></p>
+</div>

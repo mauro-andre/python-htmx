@@ -14,6 +14,7 @@
     --warning-text-color: #332701;
     --success-bg-color: #b3d8c8;
     --success-text-color: #0a3622;
+    --card-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 * {
@@ -83,7 +84,7 @@ a:hover {
     background-color: #fff;
     border-radius: 0.75rem;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: var(--card-shadow);
 }
 
 .credentials-img {
@@ -125,6 +126,44 @@ a:hover {
     font-weight: 700;
 }
 
+.alert {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    border-radius: 0.3rem;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.alert.alert-success {
+    color: var(--success-text-color);
+    background: var(--success-bg-color);
+    border-color: var(--success-text-color);
+}
+.alert.alert-danger {
+    color: var(--danger-text-color);
+    background: var(--danger-bg-color);
+    border-color: var(--danger-text-color);
+}
+
+.alert.alert-warning {
+    color: var(--warning-text-color);
+    background: var(--warning-bg-color);
+    border-color: var(--warning-text-color);
+}
+
+.alert span,
+.alert p,
+.alert i {
+    color: inherit;
+    text-align: left;
+}
+.alert i {
+    cursor: pointer;
+}
+
+/* ============= MAIN =============  */
 .app {
     display: flex;
     height: 100svh;
@@ -223,18 +262,30 @@ a:hover {
     font-size: 3rem;
 }
 
-.todo {
+.todo-item,
+.todo-form {
+    margin: 1rem auto;
     background-color: #fff;
-    width: 60rem;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+    max-width: 60rem;
+    padding: 1rem 2rem;
     border-radius: 0.8rem;
+    box-shadow: var(--card-shadow);
 }
 
-.todo-item {
-    margin: 3rem 0;
+.todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
+.todo-form .btn-submit {
+    display: flex;
+    justify-content: end;
+}
+
+.todo-form .btn-submit button {
+    padding: 0rem 1rem;
+}
 
 .todo-description {
     margin-bottom: 1rem;
@@ -264,7 +315,7 @@ a:hover {
 .todo-actions {
     display: flex;
     justify-content: space-between;
-    width: 3.5rem;
+    width: 5rem;
 }
 
 .todo-actions i {
@@ -280,6 +331,10 @@ a:hover {
     color: red;
 }
 
+.fa-circle-check {
+    color: green;
+}
+
 .status::before {
     content: "";
     display: inline-block;
@@ -289,4 +344,16 @@ a:hover {
     height: 1rem;
     vertical-align: middle;
     margin-right: 0.2rem;
+}
+
+.status.success::before {
+    background-color: green;
+}
+
+.status.warning::before {
+    background-color: rgb(236, 236, 12);
+}
+
+.status.danger::before {
+    background-color: red;
 }

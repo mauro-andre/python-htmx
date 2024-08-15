@@ -1,0 +1,321 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+    font-size: 16px;
+    --theme-color: #0b2e77;
+    --theme-hover-color: #0d57d8;
+    --theme-hover-lighter-color: #e2e5eb;
+    --theme-hover-active-color: #d6dbe4;
+    --body-bg-color: #e7e9ee;
+    --sidebar-width: 5rem;
+    --danger-bg-color: #eec8cb;
+    --danger-text-color: #3b0e12;
+    --warning-bg-color: #fff3cd;
+    --warning-text-color: #332701;
+    --success-bg-color: #b3d8c8;
+    --success-text-color: #0a3622;
+    --card-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    color: rgb(37, 37, 37);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, fill 0.3s,
+        stroke 0.3s;
+}
+
+body {
+    background-color: var(--body-bg-color);
+}
+
+button {
+    border: none;
+    color: #fff;
+    background-color: var(--theme-color);
+    cursor: pointer;
+    height: 2rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+}
+
+button:hover {
+    background-color: var(--theme-hover-color);
+}
+
+input {
+    height: 2rem;
+    font-size: 1rem;
+    padding: 0rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 0.1rem solid transparent;
+    background-color: #e7ebf4;
+}
+
+input:focus {
+    outline: none;
+    border: 0.1rem solid var(--theme-hover-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--theme-color);
+}
+
+li {
+    list-style-type: none;
+}
+
+a:hover {
+    color: var(--theme-hover-color);
+}
+
+.credentials-section {
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.credentials-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.credentials-img {
+    background-image: url("./background-credentials.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 35rem;
+    height: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.credentials-img > img {
+    width: 15rem;
+}
+
+.credentials-form {
+    width: 20rem;
+    padding: 0rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.credentials-change-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.credentials-change-form a {
+    font-weight: 700;
+}
+
+.app {
+    display: flex;
+    height: 100svh;
+}
+
+.sidebar {
+    background-color: #fff;
+    width: var(--sidebar-width);
+    height: 100svh;
+}
+
+.sidebar header {
+    background-color: rgb(241, 241, 241);
+    padding: 1rem;
+}
+
+.sidebar nav {
+    margin-top: 2rem;
+}
+
+.menu-item {
+    display: flex;
+    border: 0.5rem solid transparent;
+}
+
+.menu-item:hover {
+    background-color: var(--theme-hover-lighter-color);
+}
+
+.menu-item.active {
+    background-color: var(--theme-hover-active-color);
+}
+
+.menu-item a {
+    width: 100%;
+    height: 3.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item a i {
+    color: var(--theme-color);
+    font-size: 2rem;
+}
+
+.app main {
+    flex: 1;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem 0rem;
+}
+
+.summary-data {
+    background-color: #0d57d8;
+    width: 14rem;
+    height: 8rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-data.success {
+    background-color: var(--success-bg-color);
+}
+
+.summary-data.success h1,
+.summary-data.success p {
+    color: var(--success-text-color);
+}
+
+.summary-data.warning {
+    background-color: var(--warning-bg-color);
+}
+
+.summary-data.warning h1,
+.summary-data.warning p {
+    color: var(--warning-text-color);
+}
+
+.summary-data.danger {
+    background-color: var(--danger-bg-color);
+}
+
+.summary-data.danger h1,
+.summary-data.danger p {
+    color: var(--danger-text-color);
+}
+
+.summary-data h1 {
+    font-size: 3rem;
+}
+
+.todo-item,
+.todo-form {
+    margin: 1rem auto;
+    background-color: #fff;
+    max-width: 60rem;
+    padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    box-shadow: var(--card-shadow);
+}
+
+.todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.todo-form .btn-submit {
+    display: flex;
+    justify-content: end;
+}
+
+.todo-form .btn-submit button {
+    padding: 0rem 1rem;
+}
+
+.todo-description {
+    margin-bottom: 1rem;
+}
+
+.todo-description::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #b3b5bc;
+    margin-top: 0.2rem;
+}
+
+.todo-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-details > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 5rem;
+}
+
+.todo-actions i {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.fa-pen {
+    color: var(--theme-hover-color);
+}
+
+.fa-trash {
+    color: red;
+}
+
+.fa-circle-check {
+    color: green;
+}
+
+.status::before {
+    content: "";
+    display: inline-block;
+    background-color: rgb(121, 121, 121);
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    margin-right: 0.2rem;
+}
+
+.status.success::before {
+    background-color: green;
+}
+
+.status.warning::before {
+    background-color: rgb(236, 236, 12);
+}
+
+.status.danger::before {
+    background-color: red;
+}
