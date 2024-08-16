@@ -54,8 +54,13 @@ async def token(
             status_code=status.HTTP_400_BAD_REQUEST,
             headers={"X-Should-Swap": "true"},
         )
-    response = HTMLResponse(
-        content="", status_code=status.HTTP_200_OK, headers={"HX-Redirect": "/"}
-    )
+    response = HTMLResponse(content="", headers={"HX-Redirect": "/"})
     response.set_cookie(key="accessToken", value=user_found.email)
+    return response
+
+
+@router.get("/logout")
+async def logout(request: Request):
+    response = HTMLResponse(content="", headers={"HX-Redirect": "/"})
+    response.delete_cookie(key="accessToken")
     return response
