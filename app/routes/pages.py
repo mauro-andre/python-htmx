@@ -1,7 +1,8 @@
 from fastapi import Request, APIRouter, Depends, HTTPException, status
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
-from app.models.page import Page
+from app.models.page import Page, Home
+from app.services.token import verify_token
 
 router = APIRouter()
 
@@ -9,7 +10,7 @@ template = Jinja2Templates(directory="app/client")
 
 
 pages = [
-    Page(
+    Home(
         title="Home",
         path="/",
         html="pages/home.html",
@@ -17,24 +18,15 @@ pages = [
 ]
 
 
-async def verify_token(request: Request):
-    return request.cookies.get("accessToken")
-
-
 def generate_credentials_routes(page: Page):
     @router.get(page.path, response_class=HTMLResponse)
     async def route(request: Request, access_token: str = Depends(verify_token)):
-        hx_boosted = request.headers.get("hx-boosted")
+        hx_request = request.headers.get("hx-request")
 
         if not access_token:
-            if not hx_boosted:
-                return RedirectResponse(url="/login")
-            return HTMLResponse(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                headers={"HX-Redirect": "/login"},
-            )
-
-        html = page.html if hx_boosted else "pages/main.html"
+            return RedirectResponse(url="/login")
+        await page.resolve_page(access_token=access_token)
+        html = page.html if hx_request else "pages/main.html"
         return template.TemplateResponse(
             request=request,
             name=html,

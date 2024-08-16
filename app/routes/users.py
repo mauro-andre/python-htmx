@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Form, status, Request, HTTPException
+from fastapi import APIRouter, Form, status, Request
 from fastapi.responses import HTMLResponse
 from app.models.user import User
 from app.db.engine import engine
@@ -55,7 +55,7 @@ async def token(
             headers={"X-Should-Swap": "true"},
         )
     response = HTMLResponse(content="", headers={"HX-Redirect": "/"})
-    response.set_cookie(key="accessToken", value=user_found.email)
+    response.set_cookie(key="accessToken", value=user_found.id)
     return response
 
 

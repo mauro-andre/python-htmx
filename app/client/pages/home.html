@@ -1,139 +1,75 @@
 <div class="summary">
     <div class="summary-data success">
-        <h1>10</h1>
+        <h1>{{page.on_time}}</h1>
         <p>A vencer</p>
     </div>
     <div class="summary-data warning">
-        <h1>10</h1>
+        <h1>{{page.for_today}}</h1>
         <p>Vencem hoje</p>
     </div>
     <div class="summary-data danger">
-        <h1>10</h1>
+        <h1>{{page.overdue}}</h1>
         <p>Vencidas</p>
     </div>
 </div>
 <div class="todo">
-    <form class="todo-form" action="#">
+    <form class="todo-form" hx-post="/task/" hx-target="#main">
         <div class="form-input">
             <label for="todo-description">Descrição da tarefa</label>
-            <input type="text" id="todo-description" />
+            <input
+                type="text"
+                name="description"
+                id="todo-description"
+                required
+            />
         </div>
         <div class="form-input">
             <label for="deadline">Prazo</label>
-            <input type="date" id="deadline" />
+            <input type="date" name="deadline" id="deadline" required />
         </div>
         <div class="btn-submit">
             <button type="submit">Salvar</button>
         </div>
     </form>
     <ul class="todo-list">
+        {% for task in page.tasks %}
         <li class="todo-item">
             <div class="todo-description">
-                <p>Aqui é a descrição do todo muito bacana</p>
+                <p>{{task.description}}</p>
             </div>
             <div class="todo-details">
                 <div>
-                    <h3>29/09/2029</h3>
+                    <h3>{{task.deadline.strftime("%d/%m/%Y")}}</h3>
                     <p>Prazo</p>
                 </div>
                 <div>
-                    <h3 class="status">Atrasado</h3>
+                    <h3 class="status {{task.status_class}}">
+                        {{task.status}}
+                    </h3>
                     <p>Status</p>
                 </div>
                 <div>
-                    <h3>20/09/2029</h3>
+                    <h3>{{task.created_at.strftime("%d/%m/%Y")}}</h3>
                     <p>Criação</p>
                 </div>
                 <div>
                     <div class="todo-actions">
                         <i class="fa-solid fa-pen"></i>
-                        <i class="fa-solid fa-trash"></i>
-                        <i class="fa-solid fa-circle-check"></i>
+                        <i
+                            hx-delete="/task/{{task.id}}"
+                            hx-target="#main"
+                            class="fa-solid fa-trash"
+                        ></i>
+                        <i
+                            hx-put="/task/{{task.id}}"
+                            hx-target="#main"
+                            class="fa-solid {{task.status_icon}}"
+                        ></i>
                     </div>
                     <p>Ações</p>
                 </div>
             </div>
         </li>
-        <li class="todo-item">
-            <div class="todo-description">
-                <p>Aqui é a descrição do todo muito bacana</p>
-            </div>
-            <div class="todo-details">
-                <div>
-                    <h3>29/09/2029</h3>
-                    <p>Prazo</p>
-                </div>
-                <div>
-                    <h3 class="status success">Atrasado</h3>
-                    <p>Status</p>
-                </div>
-                <div>
-                    <h3>20/09/2029</h3>
-                    <p>Criação</p>
-                </div>
-                <div>
-                    <div class="todo-actions">
-                        <i class="fa-solid fa-pen"></i>
-                        <i class="fa-solid fa-trash"></i>
-                        <i class="fa-solid fa-circle-check"></i>
-                    </div>
-                    <p>Ações</p>
-                </div>
-            </div>
-        </li>
-        <li class="todo-item">
-            <div class="todo-description">
-                <p>Aqui é a descrição do todo muito bacana</p>
-            </div>
-            <div class="todo-details">
-                <div>
-                    <h3>29/09/2029</h3>
-                    <p>Prazo</p>
-                </div>
-                <div>
-                    <h3 class="status warning">Atrasado</h3>
-                    <p>Status</p>
-                </div>
-                <div>
-                    <h3>20/09/2029</h3>
-                    <p>Criação</p>
-                </div>
-                <div>
-                    <div class="todo-actions">
-                        <i class="fa-solid fa-pen"></i>
-                        <i class="fa-solid fa-trash"></i>
-                        <i class="fa-solid fa-circle-check"></i>
-                    </div>
-                    <p>Ações</p>
-                </div>
-            </div>
-        </li>
-        <li class="todo-item">
-            <div class="todo-description">
-                <p>Aqui é a descrição do todo muito bacana</p>
-            </div>
-            <div class="todo-details">
-                <div>
-                    <h3>29/09/2029</h3>
-                    <p>Prazo</p>
-                </div>
-                <div>
-                    <h3 class="status danger">Atrasado</h3>
-                    <p>Status</p>
-                </div>
-                <div>
-                    <h3>20/09/2029</h3>
-                    <p>Criação</p>
-                </div>
-                <div>
-                    <div class="todo-actions">
-                        <i class="fa-solid fa-pen"></i>
-                        <i class="fa-solid fa-trash"></i>
-                        <i class="fa-solid fa-circle-check"></i>
-                    </div>
-                    <p>Ações</p>
-                </div>
-            </div>
-        </li>
+        {% endfor %}
     </ul>
 </div>
