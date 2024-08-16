@@ -9,7 +9,12 @@
     <label for="password">Senha</label>
     <input type="password" name="password" id="password" />
 </div>
-<button hx-post="/user/" hx-target="#alert" hx-target-400="#alert" hx-swap="outerHTML" type="submit">
+<button
+    hx-post="/user/register"
+    hx-target="#alert"
+    hx-swap="outerHTML"
+    type="submit"
+>
     Criar conta
 </button>
 <div id="alert"></div>

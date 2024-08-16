@@ -3,13 +3,21 @@
 </div>
 <div class="form-input">
     <label for="email">Email</label>
-    <input type="email" id="email" />
+    <input type="email" name="email" id="email" />
 </div>
 <div class="form-input">
     <label for="password">Senha</label>
-    <input type="password" id="password" />
+    <input type="password" name="password" id="password" />
 </div>
-<button type="submit">Entrar</button>
+<button
+    hx-post="/user/token"
+    hx-target="#alert"
+    hx-swap="outerHTML"
+    type="submit"
+>
+    Entrar
+</button>
+<div id="alert"></div>
 <div
     class="credentials-change-form"
     hx-boost="true"
